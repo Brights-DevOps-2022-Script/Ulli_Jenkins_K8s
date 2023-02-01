@@ -4,7 +4,7 @@ metadata:
   name: ullis-jenkins-deployment
   labels:
     app: jenkins          # used by the service selector
-  namespace: ullisjenkinsspace
+  namespace: ullisjenkisspace
 spec:
   replicas: 2
   selector:

@@ -4,7 +4,7 @@ metadata:
   name: ullis-jenkins-load-balancer
 spec: 
   selector: 
-    app: nginx
+    app: jenkins
   ports:
     - port: 90
       targetPort: 90
