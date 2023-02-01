@@ -10,11 +10,12 @@ pipeline {
     }
     stages {
 
-        stage('Deploy Nginx') {
+        stage('make k8s run') {
             steps {
                 sh 'kubectl apply -f namespace.yaml'
-                // sh "kubectl apply -f nginx-deployment.yaml"
-                // sh "kubectl apply -f nginx-service.yaml"
+                sh "kubectl apply -f nginx-deployment.yaml"
+                sh "kubectl apply -f service.yaml"
+                sh "kubectl apply -f loadbalancer.yaml"
                 // sh "kubectl get pod -n felixheureka"
             }
         }

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ullis-jenkins-deployment
+  labels:
+    app: jenkins          # used by the service selector
+  namespace: ullisjenkinsspace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:             # configuration, of a pod
+      labels:
+        app: jenkins        # used by the servoce selector
+    spec:                 # blueprint for a pod
+      containers:
+      - name: jenkins
+        image: devops2022.azurecr.io/nginx:ullis-image
+        ports:
+        - containerPort: 90   # should match targetPort in Service
