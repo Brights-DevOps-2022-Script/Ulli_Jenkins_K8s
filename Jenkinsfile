@@ -18,12 +18,7 @@ pipeline {
                 sh "kubectl apply -f loadbalancer.yaml"
             }
         }
-        stage('build docker image from Dockerfile'){
-            steps {
-                sh 'echo hier wird docker image gebaut'
-                sh 'docker build -t devops2022.azurecr.io/nginx:ullis-image .'
-            }
-        }
+    }
         
         stage('push docker imgae zu acr'){
             steps {
