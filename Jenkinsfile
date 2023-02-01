@@ -19,11 +19,5 @@ pipeline {
             }
         }
     }
-        
-        stage('push docker imgae zu acr'){
-            steps {
-                sh 'echo hier wird zu acr gepushed'
-            }
-        }
     
 }
