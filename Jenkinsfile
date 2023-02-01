@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'alpine/k8s:1.23.16'
+            image 'devops2022.azurecr.io/alpine-simon:latest'
         }
     }
     environment {
@@ -16,7 +16,18 @@ pipeline {
                 sh "kubectl apply -f nginx-deployment.yaml"
                 sh "kubectl apply -f service.yaml"
                 sh "kubectl apply -f loadbalancer.yaml"
-                // sh "kubectl get pod -n felixheureka"
+            }
+        }
+        stage('build docker image from Dockerfile'){
+            steps {
+                sh 'echo hier wird docker image gebaut'
+                sh 'docker build -t devops2022.azurecr.io/nginx:ullis-image .'
+            }
+        }
+        
+        stage('push docker imgae zu acr'){
+            steps {
+                sh 'echo hier wird zu acr gepushed'
             }
         }
     }
