@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'gcr.io/cloud-builders/kubectl'
+            image 'alpine/k8s:1.23.16'
         }
     }
     environment {
@@ -9,11 +9,13 @@ pipeline {
         KUBECONFIG = credentials('k8s_config')
     }
     stages {
-        stage('Testing kubectl') {
+
+        stage('Deploy Nginx') {
             steps {
-                script {
-                    sh 'kubectl apply -f nginx-namespace.yaml'
-                }
+                sh 'kubectl apply -f namespace.yaml'
+                // sh "kubectl apply -f nginx-deployment.yaml"
+                // sh "kubectl apply -f nginx-service.yaml"
+                // sh "kubectl get pod -n felixheureka"
             }
         }
     }
