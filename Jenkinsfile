@@ -25,5 +25,5 @@ pipeline {
                 sh 'echo hier wird zu acr gepushed'
             }
         }
-    }
+    
 }
