@@ -2,7 +2,7 @@ apiVersion: v1                # service provides studry ip-adress for pod
 kind: Service                 # do i need an extra service for every pod?
 metadata:
   name: ullis-jenkins-service
-  namespace: ullisjenkisspace       
+  namespace: ullisjenkinsspace       
 spec:
   selector:
     app: jenkins                  # selects label of the deployment and the pods in it
