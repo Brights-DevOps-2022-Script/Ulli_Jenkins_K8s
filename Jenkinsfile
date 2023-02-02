@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'devops2022.azurecr.io/alpine-simon:latest'
+            image 'devops2022.azurecr.io/alpine-test:latest'
         }
     }
     environment {
