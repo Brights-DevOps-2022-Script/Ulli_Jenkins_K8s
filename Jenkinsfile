@@ -1,12 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'devops2022.azurecr.io/alpine-test:latest'
-        }
-    }
+    agent any
     environment {
         ACRCreds = credentials('acr_creds')
-        KUBECONFIG = credentials('k8s_config')
+       
     }
     
     stages {
@@ -17,12 +13,23 @@ pipeline {
             }
         }
 
-        stage('make k8s run') {
+        stage('deploy') {
+            agent {
+                docker {
+                    image 'alpine/k8s:1.23.16'
+                }
+            }
+
+            environment{
+                KUBECONFIG = credentials('k8s_config')
+            }
+
             steps {
-                sh 'kubectl apply -f namespace.yaml'
-                sh "kubectl apply -f nginx-deployment.yaml"
-                sh "kubectl apply -f service.yaml"
-                sh "kubectl apply -f loadbalancer.yaml"
+                sh 'echo $KUBECONFIG'
+                sh 'kubectl --kubeconfig=$KUBECONFIG apply -f namespace.yaml'
+                sh "kubectl --kubeconfig=$KUBECONFIG apply -f nginx-deployment.yaml"
+                sh "kubectl --kubeconfig=$KUBECONFIG apply -f service.yaml"
+                sh "kubectl --kubeconfig=$KUBECONFIG apply -f loadbalancer.yaml"
             }
         }
 
