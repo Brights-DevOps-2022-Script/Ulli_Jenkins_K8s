@@ -15,7 +15,7 @@ pipeline {
 
         stage('Image Building') {                   
             steps {
-                sh 'docker build -t devops2022.azurecr.io/nginx:ullis-image:$GIT_COMMIT .' //image wird auf Jenkins VM gebaut aus Dockerfile (im git Repo) und getagt
+                sh 'docker build -t devops2022.azurecr.io/ullis-image:$GIT_COMMIT .' //image wird auf Jenkins VM gebaut aus Dockerfile (im git Repo) und getagt
                 sh 'docker push devops2022.azurecr.io/ullis-image:$GIT_COMMIT'              //image wird auf ACR gepushed
                 sh 'docker rmi devops2022.azurecr.io/ullis-image:$GIT_COMMIT'               // image wird von Jenkins VM gelöscht
             }
