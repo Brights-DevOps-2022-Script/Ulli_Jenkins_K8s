@@ -17,6 +17,6 @@ spec:
     spec:                 # blueprint for a pod
       containers:
       - name: jenkins
-        image: devops2022.azurecr.io/ullis-image:$GIT_COMMIT
+        image: REPLACE_ME
         ports:
         - containerPort: 80   # should match targetPort in Service
