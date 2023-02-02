@@ -34,7 +34,6 @@ pipeline {
 
             steps {
                 sh 'echo $KUBECONFIG'
-                
                 sh 'kubectl --kubeconfig=$KUBECONFIG apply -f namespace.yaml'
                 sh "kubectl --kubeconfig=$KUBECONFIG apply -f nginx-deployment.yaml"            // das zieht das Image aus ACR, drinnen benannt, und baut pods draus.
                 sh 'kubectl set image -n ullisjenkinsspace deployment/ullis-jenkins-deployment jenkins=devops2022.azurecr.io/ullis-image:$GIT_COMMIT'                sh "kubectl --kubeconfig=$KUBECONFIG apply -f service.yaml"
