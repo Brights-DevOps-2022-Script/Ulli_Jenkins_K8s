@@ -19,4 +19,4 @@ spec:
       - name: jenkins
         image: devops2022.azurecr.io/ullis-image:$GIT_COMMIT
         ports:
-        - containerPort: 90   # should match targetPort in Service
+        - containerPort: 80   # should match targetPort in Service
