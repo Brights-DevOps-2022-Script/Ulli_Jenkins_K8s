@@ -8,7 +8,14 @@ pipeline {
         ACRCreds = credentials('acr_creds')
         KUBECONFIG = credentials('k8s_config')
     }
+    
     stages {
+        
+        stage('ACR Login') {
+            steps{
+                sh 'docker login devops2022.azurecr.io -u $ACR_CRED_USR -p $ACR_CRED_PSW'
+            }
+        }
 
         stage('make k8s run') {
             steps {
@@ -18,6 +25,7 @@ pipeline {
                 sh "kubectl apply -f loadbalancer.yaml"
             }
         }
-    }
+
+    
     
 }
