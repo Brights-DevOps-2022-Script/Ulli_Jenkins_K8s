@@ -17,6 +17,6 @@ spec:
     spec:                 # blueprint for a pod
       containers:
       - name: jenkins
-        image: devops2022.azurecr.io/nginx:ullis-image
+        image: devops2022.azurecr.io/nginx:ullis-image42
         ports:
         - containerPort: 90   # should match targetPort in Service
