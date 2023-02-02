@@ -36,7 +36,7 @@ pipeline {
                 sh 'echo $KUBECONFIG'
                 
                 sh 'kubectl --kubeconfig=$KUBECONFIG apply -f namespace.yaml'
-                sh 'kubectl set image deployment/nginx-deployment nginx=nginx:$GIT_COMMIT'
+                sh 'kubectl set image deployment/ullis-jenkins-deployment nginx=nginx:$GIT_COMMIT'
                 sh "kubectl --kubeconfig=$KUBECONFIG apply -f nginx-deployment.yaml"            // das zieht das Image aus ACR, drinnen benannt, und baut pods draus.
                 sh "kubectl --kubeconfig=$KUBECONFIG apply -f service.yaml"
                 sh "kubectl --kubeconfig=$KUBECONFIG apply -f loadbalancer.yaml"
