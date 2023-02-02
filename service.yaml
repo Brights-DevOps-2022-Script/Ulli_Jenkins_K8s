@@ -8,6 +8,6 @@ spec:
     app: jenkins                  # selects label of the deployment and the pods in it
   ports:
     - port: 90                  # an diesem Port hört der Service. wird con ingress angesteuert
-                                # hier ggf. targetPort, wenn anders als Port
+      targetPort: 90                          # hier ggf. targetPort, wenn anders als Port
                                 # targetPort matches containerPort in deployment (pods)
   type: LoadBalancer
