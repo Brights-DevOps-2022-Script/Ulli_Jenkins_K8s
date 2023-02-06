@@ -6,7 +6,7 @@ metadata:
     app: jenkins          # used by the service selector
   namespace: ullisjenkinsspace
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: jenkins
@@ -17,6 +17,6 @@ spec:
     spec:                 # blueprint for a pod
       containers:
       - name: jenkins
-        image: REPLACE_ME
+        image: REPLACE_ME     # das wird im Jenkinsfile durch den azure-namen ersetzt
         ports:
         - containerPort: 80   # should match targetPort in Service
