@@ -31,7 +31,7 @@ pipeline {
                 sh "git commit -m 'update image'"
                 sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/mecomTeam.git HEAD:main"
                 }                            
-                                            // kustomize.yaml ... kustomize edit set image dev....:$hsh
+                // kustomize.yaml ... kustomize edit set image dev....:$hsh
             }
 
         }
