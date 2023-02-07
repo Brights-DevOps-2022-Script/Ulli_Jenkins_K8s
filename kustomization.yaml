@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ullis-argocd-deployment
+images:
+  - name: REPLACE_ME
+    newName: ULLIS-AGRO-NGINX
